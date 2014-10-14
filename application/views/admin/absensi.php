@@ -58,7 +58,7 @@
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="<? echo base_url('js/plugins/jquery.maskedinput.js')?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('js/plugins/jquery.maskedinput.js')?>"></script>
 	<script>
 		$(function() {
 			$('#datepicker1').datepicker({

@@ -24,7 +24,6 @@ class Report extends CI_Controller {
 			'menu_active' => M_REPORT_A,
 			'submenu_active' => M_REPORT_A_ABSENSI
 		);
-		echo("<script>console.log('PHP: ".$data."');</script>");
 		$this->view('admin/report/absensi',$data);
 	}
 	
