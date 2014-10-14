@@ -58,4 +58,4 @@
 		
 		function setOtherData(){};
 	</script>
-	<script src="<?php echo base_url('js/common-form.js')?>"></script>
+	<script src="<? echo base_url('js/common-form.js')?>"></script>

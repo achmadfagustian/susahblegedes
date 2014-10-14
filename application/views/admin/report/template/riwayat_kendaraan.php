@@ -59,7 +59,7 @@
       <td>Type</td>
       <td>:</td>
       <td colspan="4"><select name="cb_idcab" id="cb_idcab">
-        <?php 
+        <?php $cabs = $this->fungsi->get_menu_left(1,M_REPORT_A);
 
 foreach ($cab as $cabs)
 { 
@@ -110,4 +110,4 @@ foreach ($cab as $cabs)
 		
 		function setOtherData(){};
 	</script>
-	<script src="<? echo base_url('js/common-form.js')?>"></script>
+	<script src="<?php echo base_url('js/common-form.js')?>"></script>

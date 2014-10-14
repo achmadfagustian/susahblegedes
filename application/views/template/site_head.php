@@ -8,18 +8,16 @@
 <script type="text/javascript" src="<?php echo base_url('js/plugins/jquery-1.10.2.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/plugins/jquery-ui-1.10.4.custom.min.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/plugins/jquery.cookie.js')?>"></script>
-<!--script type="text/javascript" src="<? echo base_url('js/plugins/jquery.flot.min.js')?>"></script-->
-<!--script type="text/javascript" src="<? echo base_url('js/plugins/jquery.flot.resize.min.js')?>"></script-->
+<!--script type="text/javascript" src="<?php echo base_url('js/plugins/jquery.flot.min.js')?>"></script-->
+<!--script type="text/javascript" src="<?php echo base_url('js/plugins/jquery.flot.resize.min.js')?>"></script-->
 <script type="text/javascript" src="<?php echo base_url('js/plugins/jquery.slimscroll.js')?>"></script>
-<!-- <script type="text/javascript" src="http://localhost/kings/js/common-form.js"></script>
-<script type="text/javascript" src="http://localhost/kings/js/common-table.js"></script> -->
-<!--script type="text/javascript" src="<? echo base_url('js/custom/dashboard.js')?>"></script-->
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="<? echo base_url('js/plugins/excanvas.min.js')?>"></script><![endif]-->
+<!--script type="text/javascript" src="<?php echo base_url('js/custom/dashboard.js')?>"></script-->
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="<?php echo base_url('js/plugins/excanvas.min.js')?>"></script><![endif]-->
 <!--[if IE 9]>
-    <link rel="stylesheet" media="screen" href="<? echo base_url('css/style.ie9.css')?>"/>
+    <link rel="stylesheet" media="screen" href="<?php echo base_url('css/style.ie9.css')?>"/>
 <![endif]-->
 <!--[if IE 8]>
-    <link rel="stylesheet" media="screen" href="<? echo base_url('css/style.ie8.css')?>"/>
+    <link rel="stylesheet" media="screen" href="<?php echo base_url('css/style.ie8.css')?>"/>
 <![endif]-->
 <!--[if lt IE 9]>
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>

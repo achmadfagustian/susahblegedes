@@ -83,6 +83,6 @@
 				$('#f_tipe').val(data.tipe);
 			}
 		</script>
-		<script src="http://localhost/kings/js/common-table.js')"></script>
+		<script src="<? echo base_url('js/common-table.js')?>"></script>
 	</body>
 </html>

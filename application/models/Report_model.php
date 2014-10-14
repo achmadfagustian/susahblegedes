@@ -34,7 +34,7 @@ class Report_model extends CI_Model {
 	function fetch_record_riwayat($limit, $start){
 		$this->db->select("customer_history.*");
 		$this->db->from($this->table_riwayat);
-		//$this->db->join("main_user", "abs_data.nik = main_user.nik");
+		$this->db->join("main_user", "abs_data.nik = main_user.nik");
 		$this->db->limit($limit, $start);
 		
 		$this->db->order_by('customer_history.reg_datetime','DESC');

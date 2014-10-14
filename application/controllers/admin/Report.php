@@ -24,6 +24,7 @@ class Report extends CI_Controller {
 			'menu_active' => M_REPORT_A,
 			'submenu_active' => M_REPORT_A_ABSENSI
 		);
+		echo("<script>console.log('PHP: ".$data."');</script>");
 		$this->view('admin/report/absensi',$data);
 	}
 	
@@ -203,6 +204,34 @@ class Report extends CI_Controller {
 	}
 	
 	public function print_mekanik_detail_xls(){
+		
+	}
+	//==============================================================================	
+	
+	public function stok_barang(){
+		$data = array(
+			'title' => 'Admin | Report -> Stok Barang',
+			'menu_active' => M_REPORT_A,
+			'submenu_active' => M_REPORT_A_MEKANIK_DETAIL
+		);
+		$this->view('admin/report/stok_barang',$data);
+	}
+	
+	public function print_stok_barang_xls(){
+		
+	}
+	//==============================================================================	
+	
+	public function stok_barang_detail(){
+		$data = array(
+			'title' => 'Admin | Report -> Mekanik Detail',
+			'menu_active' => M_REPORT_A,
+			'submenu_active' => M_REPORT_A_MEKANIK_DETAIL
+		);
+		$this->view('admin/report/stok_detail',$data);
+	}
+	
+	public function print_stok_barang_detil_xls(){
 		
 	}
 //==============================================================================	

@@ -50,7 +50,7 @@
 			<input type="hidden" name="ajax" value="true"/>
 		</form>
 		<div id="pagination"></div>
-		<script type="text/javascript" src="<? echo base_url('js/plugins/jquery-1.10.2.js')?>"></script>
+		<script type="text/javascript" src="<?php echo base_url('js/plugins/jquery-1.10.2.js')?>"></script>
 		<script src="<?php echo base_url('js/plugins/handlebars-v1.3.0.js') ?>"></script> 
 		<script>
 			var base_url = "<?php echo base_url(); ?>";
@@ -60,6 +60,6 @@
 				
 			}
 		</script>
-		<script src="<? echo base_url('js/common-table.js')?>"></script>
+		<script src="<?php echo base_url('js/common-table.js')?>"></script>
 	</body>
 </html>

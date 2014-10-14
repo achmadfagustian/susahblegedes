@@ -55,4 +55,4 @@
 		
 		function setOtherData(){};
 	</script>
-	<script src="http://localhost/kings/js/common-form.js"></script>
+	<script src="<? echo base_url('js/common-form.js')?>"></script>
