@@ -82,6 +82,6 @@
 				$('#f_no_fax').val(data.no_fax);
 			}
 		</script>
-		<script src="<? echo base_url('js/common-table.js')?>"></script>
+		<script src="<?php echo base_url('js/common-table.js')?>"></script>
 	</body>
 </html>

@@ -47,4 +47,22 @@ class Report_model extends CI_Model {
 		$this->db->from($this->table_riwayat);
 		return $this->db->count_all_results();
 	}
+
+//======================================================
+	function fetch_record_service($limit, $start){
+		$this->db->select("abs_data.*, main_user.nama");
+		$this->db->from($this->table_absensi);
+		$this->db->join("main_user", "abs_data.nik = main_user.nik");
+		$this->db->limit($limit, $start);
+		
+		$this->db->order_by('abs_data.tgl_abs','DESC');
+		$query = $this->db->get();
+		return ($query->num_rows() > 0)  ? $query->result() : FALSE;
+	}
+
+	function record_count_service(){
+		
+		$this->db->from($this->table_absensi);
+		return $this->db->count_all_results();
+	}
 }

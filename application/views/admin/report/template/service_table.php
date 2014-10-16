@@ -54,7 +54,7 @@
 		<script src="<?php echo base_url('js/plugins/handlebars-v1.3.0.js') ?>"></script> 
 		<script>
 			var base_url = "<?php echo base_url(); ?>";
-			var url = "admin/report/absensi_table/";	
+			var url = "admin/report/service_table/";	
 			
 			function populate_filter(data){
 				

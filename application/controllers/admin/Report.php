@@ -135,8 +135,7 @@ class Report extends CI_Controller {
 	public function print_service_xls(){
 	
 	}
-//==============================================================================	
-	
+
 	public function service_detail(){
 		$data = array(
 			'title' => 'Admin | Report -> Service Detail',
@@ -148,6 +147,42 @@ class Report extends CI_Controller {
 	
 	public function print_service_detail_xls(){
 	
+	}
+
+	public function service_table_index(){
+		$data = array( 	'kode_perusahaan'	=> $this->input->get('kode_perusahaan'),
+						'nama'			=> $this->input->get('nama'),
+						'kota'			=> $this->input->get('kota'),
+						'kodepos'		=> $this->input->get('kodepos'),
+						'no_telp'		=> $this->input->get('no_telp'),
+						'no_fax'		=> $this->input->get('no_fax'));
+		$this->load->view('admin/report/template/service_table',$data);
+	}
+	public function service_table(){
+		$filter = array('date_from'	=> $this->input->post('date_from'),
+						'date_to'	=> $this->input->post('date_to'),
+						'nama'		=> $this->input->post('nama'));
+						
+		$config = $this->fungsi->common_pagination();
+		$config["base_url"] = base_url() . "admin/report/absensi_table/";
+		$config["total_rows"] = $this->Report_model->record_count_absensi();
+		$config["per_page"] = $this->config->item('paging_limit');
+
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		$data['page'] = $page;
+
+		$data["results"] = $this->Report_model->fetch_record_service($config["per_page"], $page);
+
+		if($this->input->post('ajax', FALSE)){
+			echo json_encode(array(
+				'date_from'	=> $filter['date_from'],
+				'date_to' 	=> $filter['date_to'],
+				'nama' 		=> $filter['nama'],
+				'results' 	=> $data["results"],
+				'pagination'=> $this->pagination->create_links()
+			));
+		};
 	}
 //==============================================================================	
 	
