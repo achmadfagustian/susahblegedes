@@ -11,6 +11,7 @@ class Report_model extends CI_Model {
 	/* Insialiasi nama table */
 	var $table_absensi		= 'abs_data';
 	var $table_riwayat		= 'customer_history';
+	var $table_stok_barang 	= 'm_barang';
 	//var $table_absensi		= 'abs_data';
 	
 	function fetch_record_absensi($limit, $start){
@@ -65,4 +66,15 @@ class Report_model extends CI_Model {
 		$this->db->from($this->table_absensi);
 		return $this->db->count_all_results();
 	}
+
+	function fetch_record_stok_barang($limit, $start){
+		$this->db->select("m_barang.id_barang, m_barang.nama, m_barang.jum_stock");
+		$this->db->from($this->table_stok_barang);
+		$this->db->limit($limit, $start);
+		
+		$this->db->order_by('m_barang.id_barang','ASC');
+		$query = $this->db->get();
+		return ($query->num_rows() > 0)  ? $query->result() : FALSE;
+	}
+
 }
