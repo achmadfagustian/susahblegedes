@@ -12,35 +12,35 @@
 						<col class="con0" />
 						<col class="con1" />
 						<col class="con0" />
+						<col class="con1" />
+						<col class="con0" />
 					</colgroup>
 					<thead>
 						<tr>
 							<th class="head1"><input type="checkbox" class="checkall"/></th>
-							<th class="head0">NIK</th>
-							<th class="head1">Nama</th>
-							<th class="head0">Tanggal Absensi</th>
-							<th class="head1">Status</th>
+							<th class="head0">Mekanin</th>
+							<th class="head1">No Polisi</th>
+							<th class="head0">Nama Customer</th>
+							<th class="head1">Type Motor</th>
+							<th class="head0">Jam Mulai</th>
+							<th class="head1">Jam Selesai</th>
 						</tr>
 					</thead>
 					<tbody>
 						{{#if results}}
 							{{#each results}}
-							<tr id="{{nik}}">
+							<tr id="{{nama_mekanik}}">
 								<td class="chkbox"><input type="checkbox" class="chkbox-input" value="{{id_perusahaan}}"/></td>
-								<td>{{nik}}</td>                                                                                   
-								<td>{{nama}}</td>                                                                                   
-								<td>{{tgl_abs}}</td>                                                                                   
-								<td>
-									{{#ifCond status '==' 1}}
-										Active
-									{{else}}
-										Inactive
-									{{/ifCond}}
-								</td>                                                                             
+								<td>{{nama_mekanik}}</td>                                                                                   
+								<td>{{no_polisi}}</td>                                                                                   
+								<td>{{pemilik}}</td>
+								<td><td> 
+								<td>{{start_datetime}}</td>
+								<td>{{finish_datetime}}</td>                                                                 
 							</tr>
 							{{/each}}
 						{{else}}
-							  <tr><td colspan="5">No records found!</tr></td>
+							  <tr><td colspan="7">No records found!</tr></td>
 						{{/if}}
 					</tbody>
 				</table>

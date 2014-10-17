@@ -12,6 +12,7 @@ class Report_model extends CI_Model {
 	var $table_absensi		= 'abs_data';
 	var $table_riwayat		= 'customer_history';
 	var $table_stok_barang 	= 'm_barang';
+	var $table_service		= 'vw_transaksi_mekanik';
 	//var $table_absensi		= 'abs_data';
 	
 	function fetch_record_absensi($limit, $start){
@@ -51,12 +52,11 @@ class Report_model extends CI_Model {
 
 //======================================================
 	function fetch_record_service($limit, $start){
-		$this->db->select("abs_data.*, main_user.nama");
-		$this->db->from($this->table_absensi);
-		$this->db->join("main_user", "abs_data.nik = main_user.nik");
+		$this->db->select("vw_transaksi_mekanik.*");
+		$this->db->from($this->table_service);
 		$this->db->limit($limit, $start);
 		
-		$this->db->order_by('abs_data.tgl_abs','DESC');
+		$this->db->order_by('vw_transaksi_mekanik.nama_mekanik','DESC');
 		$query = $this->db->get();
 		return ($query->num_rows() > 0)  ? $query->result() : FALSE;
 	}
