@@ -15,28 +15,28 @@
 					</colgroup>
 					<thead>
 						<tr>
-							<th class="head1"><input type="checkbox" class="checkall"/></th>
-							<th class="head0">NIK</th>
-							<th class="head1">Nama</th>
-							<th class="head0">Tanggal Absensi</th>
-							<th class="head1">Status</th>
+						<th class="head1"><input type="checkbox" class="checkall"/></th>
+							<th class="head0">Pemilik</th>
+							<th class="head1">No Polisi</th>
+							<th class="head0">Tipe</th>
+							<th class="head1">Kilometer</th>
+							<th class="head0">Mekanik</th>
+							<th class="head1">tanggal Register</th>
+							<th class="head0">Keterangan</th>
 						</tr>
 					</thead>
 					<tbody>
 						{{#if results}}
 							{{#each results}}
-							<tr id="{{nik}}">
-								<td class="chkbox"><input type="checkbox" class="chkbox-input" value="{{id_perusahaan}}"/></td>
-								<td>{{nik}}</td>                                                                                   
-								<td>{{nama}}</td>                                                                                   
-								<td>{{tgl_abs}}</td>                                                                                   
-								<td>
-									{{#ifCond status '==' 1}}
-										Active
-									{{else}}
-										Inactive
-									{{/ifCond}}
-								</td>                                                                             
+							<tr id="{{id_customer_history}}">
+								<td class="chkbox"><input type="checkbox" class="chkbox-input" value="{{id_customer_history}}"/></td>
+								<td>{{pemilik}}</td>                                                                                   
+								<td>{{no_polisi}}</td>                                                                                   
+								<td>{{jenis}}</td>
+								<td>{{km}}</td>                                                                                        
+								<td>{{mekanik}}</td>
+								<td>{{reg_datetime}}</td>
+								<td>{{keterangan}}</td>                                                                                                                
 							</tr>
 							{{/each}}
 						{{else}}

@@ -31,10 +31,14 @@
 								<td>{{nama}}</td>                                                                                   
 								<td>{{tgl_abs}}</td>                                                                                   
 								<td>
-									{{#ifCond status '==' 1}}
-										Active
+									{{#ifCond status '==' 0}}
+										Active (In)
 									{{else}}
-										Inactive
+										{{#ifCond status '==' 1}}
+											Active (out)
+											{{else}}
+											Inactive
+										{{/ifCond}}
 									{{/ifCond}}
 								</td>                                                                             
 							</tr>

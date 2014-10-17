@@ -213,8 +213,8 @@ function is_array_empty($InputVariable){
 	/* Fungsi utk get Menu Left User Login */
 	function get_menu_left($tipe,$parent){
 		$this->CI->load->model('role_model', '', TRUE);
-		$menu_tops = $this->CI->role_model->select_menu_by_id_role("m_menu.*",$tipe,$this->CI->session->userdata('id_role'),$parent,"result");
-		return $menu_tops;
+		$menu_left = $this->CI->role_model->select_menu_by_id_role("m_menu.*",$tipe,$this->CI->session->userdata('id_role'),$parent,"result");
+		return $menu_left;
 	}
 
 /* Fungsi utk check otorisasi menu */

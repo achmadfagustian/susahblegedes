@@ -71,7 +71,7 @@ class Report extends CI_Controller {
 			'menu_active' => M_REPORT_A,
 			'submenu_active' => M_REPORT_A_RIWAYAT_KENDARAAN
 		);
-		$this->view('admin/report/template/riwayat_kendaraan',$data);
+		$this->view('admin/report/riwayat_kendaraan',$data);
 	}
 	
 	public function riwayat_table_index(){
@@ -246,7 +246,7 @@ class Report extends CI_Controller {
 		$data = array(
 			'title' => 'Admin | Report -> Stok Barang',
 			'menu_active' => M_REPORT_A,
-			'submenu_active' => M_REPORT_A_MEKANIK_DETAIL
+			'submenu_active' => M_REPORT_A_STOK_BARANG
 		);
 		$this->view('admin/report/stok_barang',$data);
 	}

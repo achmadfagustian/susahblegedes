@@ -18,7 +18,7 @@
 					<thead>
 						<tr>
 							<th class="head1"><input type="checkbox" class="checkall"/></th>
-							<th class="head0">Mekanin</th>
+							<th class="head0">Mekanik</th>
 							<th class="head1">No Polisi</th>
 							<th class="head0">Nama Customer</th>
 							<th class="head1">Type Motor</th>

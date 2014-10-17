@@ -89,7 +89,7 @@ foreach ($cab as $cabs)
 			i = 0;
 		};
 		
-		var refresh_table_url = "<?php echo site_url('admin/master_data/kolega_table_index')?>";
+		var refresh_table_url = "<?php echo site_url('admin/report/riwayat_table_index')?>";
 		var dialog_save_url = "";
 		var multiple_del_url = "";
 		var get_data_url = "";
