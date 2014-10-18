@@ -42,48 +42,41 @@
 
 </script>
     
-		<form name="form1" method="POST" action="#" id="form-filter">
-		
-  <table width="512" border="0">
-    <tr>
-      <td width="86">Tanggal</td>
-      <td width="7">:</td>
-      <td width="144"><label for="txt_date1"></label>
-      <input type="text" name="txt_date1" id="txt_date1" /></td>
-      <td width="22">To</td>
-      <td width="11">:</td>
-      <td width="216"><label for="txt_date2"></label>
-      <input type="text" name="txt_date2" id="txt_date2" /></td>
-    </tr>
-    <tr>
-      <td>Type</td>
-      <td>:</td>
-      <td colspan="4"><select name="cb_idcab" id="cb_idcab">
-        <?php 
-
-foreach ($cab as $cabs)
-{ 
-?>
-<option value="<?php echo $cabs->idcab; ?>" ><?php echo $cabs->cabname; ?></option>
-<?php
-}
-?>  
-      </select></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td><input type="submit" name="button" id="button" value="Submit" class="button" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  </table>
+		<form name="form1" id="form-filter">
+				
+		  <table width="512" border="0">
+		    <tr>
+		      <td width="100">Pemilik</td>
+		      <td width="7">:</td>
+		      <td width="100"><input type="text" id="pemilik"/></td>
+		    </tr>
+		    <tr>
+		      <td width="100">Type</td>
+		      <td width="7">:</td>
+		      <td  width="100" colspan="4"><select name="cb_idcab" id="cb_idcab">
+					<option value="MATIC" >Matic</option>
+					<option value="SPORT" >Sport</option>
+					<option value="MOPED" >Moped</option>
+		      </select></td>
+		    </tr>
+		    <tr>
+		      <td>&nbsp;</td>
+		      <td>&nbsp;</td>
+		      <td><input type="submit" name="button" onclick="searchRiwayat()" id="search-riwayat" value="Submit" class="button" /></td>
+		      <td>&nbsp;</td>
+		      <td>&nbsp;</td>
+		      <td>&nbsp;</td>
+		    </tr>
+		  </table>
 
 		</form>
 	</div>
 	<script>
 		var i = 0;
+
+		function searchRiwayat(){
+			
+		};
 		
 		function pagination_change(){
 			i = 0;
@@ -96,7 +89,7 @@ foreach ($cab as $cabs)
 		
 		var attr_add = {title: ""};
 		var attr_edit = {title: ""};
-		var attr_search = {title: "Cari Absensi"};
+		var attr_search = {title: "Cari Riwayat Kendaraan"};
 		var width_form = 600;
 		var height_form = 490;
 		var width_filter = 600;

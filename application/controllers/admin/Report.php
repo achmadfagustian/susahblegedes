@@ -246,8 +246,8 @@ class Report extends CI_Controller {
 		$data = array(
 			'title' => 'Admin | Report -> Stok Barang',
 			'menu_active' => M_REPORT_A,
-			'submenu_active' => M_REPORT_A_STOK_BARANG
-		);
+			'submenu_active' => M_REPORT_A_MEKANIK
+			);
 		$this->view('admin/report/stok_barang',$data);
 	}
 	
