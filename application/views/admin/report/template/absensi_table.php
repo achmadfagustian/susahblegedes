@@ -20,6 +20,7 @@
 							<th class="head1">Nama</th>
 							<th class="head0">Tanggal Absensi</th>
 							<th class="head1">Status</th>
+							<th class="head0">Gaji</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -40,7 +41,8 @@
 											Inactive
 										{{/ifCond}}
 									{{/ifCond}}
-								</td>                                                                             
+								</td>     
+								<td>{{gaji}}</td>                                                                        
 							</tr>
 							{{/each}}
 						{{else}}
@@ -52,6 +54,10 @@
 		</div>
 		<form method="POST" action="#" id="form-hidden-filter" class="hidden">
 			<input type="hidden" name="ajax" value="true"/>
+			<input type="hidden" name="nama" value="<?php echo htmlspecialchars($nama); ?>"/> <!-- This is the way to get data from controler -->
+			<input type="hidden" name="nik" value="<?php echo htmlspecialchars($nik); ?>"/>
+			<input type="hidden" name="date_from" value="<?php echo htmlspecialchars($date_from); ?>"/>
+			<input type="hidden" name="date_to" value="<?php echo htmlspecialchars($date_to); ?>"/>
 		</form>
 		<div id="pagination"></div>
 		<script type="text/javascript" src="<?php echo base_url('js/plugins/jquery-1.10.2.js')?>"></script>
@@ -59,9 +65,20 @@
 		<script>
 			var base_url = "<?php echo base_url(); ?>";
 			var url = "admin/report/absensi_table/";	
-			
-			function populate_filter(data){
+
+			function populate_filter(data, callback){
+
+				//populate data by nik
+				var dataFilter = [];
+				for (var i = 0; i<data.results.length; i++) {
+					if (data.results[i].nik == data.nik) {
+						dataFilter.push(data.results[i]);
+					}
+				}
 				
+				if (dataFilter.length) {
+					callback(dataFilter);
+				}
 			}
 		</script>
 		<script src="<?php echo base_url('js/common-table.js')?>"></script>

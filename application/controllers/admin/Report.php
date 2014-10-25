@@ -30,13 +30,21 @@ class Report extends CI_Controller {
 	public function absensi_table_index(){
 		$data = array( 	'date_from'	=> $this->input->get('date_from'),
 						'date_to'	=> $this->input->get('date_to'),
+						'nik'		=> $this->input->get('nik'),
 						'nama'		=> $this->input->get('nama'));
+		/*echo $data['date_from'];
+		echo $data['date_to'];
+		echo $data['nik'];
+		echo $data['nama'];*/
 		$this->load->view('admin/report/template/absensi_table',$data);
 	}
 	
 	public function absensi_table(){
+
+		//set $filter for show filtering data
 		$filter = array('date_from'	=> $this->input->post('date_from'),
 						'date_to'	=> $this->input->post('date_to'),
+						'nik'		=> $this->input->post('nik'),
 						'nama'		=> $this->input->post('nama'));
 						
 		$config = $this->fungsi->common_pagination();
@@ -55,12 +63,14 @@ class Report extends CI_Controller {
 				'date_from'	=> $filter['date_from'],
 				'date_to' 	=> $filter['date_to'],
 				'nama' 		=> $filter['nama'],
+				'nik'		=> $filter['nik'],
+				'filter'	=> $filter,
 				'results' 	=> $data["results"],
 				'pagination'=> $this->pagination->create_links()
 			));
 		};
 	}
-	
+
 	public function print_absensi_xls(){
 		
 	}

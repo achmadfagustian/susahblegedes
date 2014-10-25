@@ -36,19 +36,27 @@ jQuery(function($){
 			}
 		});
 	};
-
+	
 	 function load_result(index) {
 	  index = index || 0;
 	  $.post(base_url + url + index, $('#form-hidden-filter').serialize(), function(data) {
 	   $("#result_table").html(result_template({results: data.results}));
 	   $("#result_table2").html($("#result_template").html());
 	   $('#pagination').html(data.pagination);
-	   populate_filter(data);
+	   populate_filter(data, filterResult);
 	   checkAll();
 	  }, "json");
 	 }
 
 	 load_result();
+	}
+
+	function filterResult(data) {
+		console.log(data);
+		$("#result_table").html(result_template({results: data}));
+		$("#result_table2").html($("#result_template").html());
+		$('#pagination').html(data.pagination);
+		checkAll();
 	}
 
 	 $('#pagination').on('click', '.paging_table a', function(e) {
