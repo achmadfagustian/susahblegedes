@@ -32,10 +32,6 @@ class Report extends CI_Controller {
 						'date_to'	=> $this->input->get('date_to'),
 						'nik'		=> $this->input->get('nik'),
 						'nama'		=> $this->input->get('nama'));
-		/*echo $data['date_from'];
-		echo $data['date_to'];
-		echo $data['nik'];
-		echo $data['nama'];*/
 		$this->load->view('admin/report/template/absensi_table',$data);
 	}
 	
@@ -56,7 +52,7 @@ class Report extends CI_Controller {
 		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 		$data['page'] = $page;
 
-		$data["results"] = $this->Report_model->fetch_record_absensi($config["per_page"], $page);
+		$data["results"] = $this->Report_model->fetch_record_absensi($config["per_page"], $page, $filter);
 
 		if($this->input->post('ajax', FALSE)){
 			echo json_encode(array(

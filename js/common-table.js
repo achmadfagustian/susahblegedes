@@ -43,11 +43,9 @@ jQuery(function($){
 	   $("#result_table").html(result_template({results: data.results}));
 	   $("#result_table2").html($("#result_template").html());
 	   $('#pagination').html(data.pagination);
-	   populate_filter(data, filterResult);
 	   checkAll();
 	  }, "json");
 	 }
-
 	 load_result();
 	}
 

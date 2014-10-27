@@ -65,21 +65,6 @@
 		<script>
 			var base_url = "<?php echo base_url(); ?>";
 			var url = "admin/report/absensi_table/";	
-
-			function populate_filter(data, callback){
-
-				//populate data by nik
-				var dataFilter = [];
-				for (var i = 0; i<data.results.length; i++) {
-					if (data.results[i].nik == data.nik) {
-						dataFilter.push(data.results[i]);
-					}
-				}
-				
-				if (dataFilter.length) {
-					callback(dataFilter);
-				}
-			}
 		</script>
 		<script src="<?php echo base_url('js/common-table.js')?>"></script>
 	</body>
