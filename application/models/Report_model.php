@@ -15,13 +15,12 @@ class Report_model extends CI_Model {
 	var $table_service		= 'vw_transaksi_mekanik';
 	
 	function fetch_record_absensi($limit, $start, $filter){
-		$this->db->select("abs_data.*");
-//  	$this->db->select("abs_data.*, main_user.nama");
+	  	$this->db->select("abs_data.*, main_user.nama");
 		$this->db->from($this->table_absensi);
-// 		$this->db->join("main_user", "abs_data.nik = main_user.nik");
+		$this->db->join("main_user", "abs_data.nik = main_user.nik");
 		foreach ($filter as $key => $value) {
 			if($value!=""){
-				$this->db->like($key,$value);
+				$this->db->where("abs_data.$key", $value);
 			}
 		}
 		$this->db->limit($limit, $start);
