@@ -58,10 +58,18 @@
 				changeYear: true,
 				dateFormat: "dd-mm-yy"
 			}).val()
+
+			$('#date_to').datepicker({
+				buttonImageOnly: false,
+				changeMonth: true,
+				changeYear: true,
+				dateFormat: "dd-mm-yy"
+			}).val()
 		});
 	
 		$(function(){
 			$("#date_from").mask("99-99-9999");
+			$("#date_to").mask("99-99-9999");
 		})
 	</script>
 

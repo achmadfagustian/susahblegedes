@@ -17,12 +17,19 @@ class Report_model extends CI_Model {
 	function fetch_record_absensi($limit, $start, $filter){
 	  	$this->db->select("abs_data.*, main_user.nama");
 		$this->db->from($this->table_absensi);
-		$this->db->join("main_user", "abs_data.nik = main_user.nik");
+		
 		foreach ($filter as $key => $value) {
-			if($value!=""){
-				$this->db->where("abs_data.$key", $value);
+			if($value!="" && $key == "nik"){
+				$this->db->where("abs_data.nik", $value);
+			}elseif ($value!="" && $key == "date_from") {
+				$this->db->where("abs_data.tgl_abs >=", $filter['date_from']);
+			}elseif ($value!="" && $key == "date_to") {
+				$this->db->where("abs_data.tgl_abs <=", $filter['date_to'] );
+			}elseif ($value!="" && $key == "nama") {
+				$this->db->where("main_user.nama", $value);
 			}
 		}
+		$this->db->join("main_user", "abs_data.nik = main_user.nik");
 		$this->db->limit($limit, $start);
 		
 		$this->db->order_by('abs_data.tgl_abs','DESC');

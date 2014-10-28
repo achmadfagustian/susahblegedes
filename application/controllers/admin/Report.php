@@ -47,12 +47,12 @@ class Report extends CI_Controller {
 		$config["base_url"] = base_url() . "admin/report/absensi_table/";
 		$config["total_rows"] = $this->Report_model->record_count_absensi();
 		$config["per_page"] = $this->config->item('paging_limit');
-
+	
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 		$data['page'] = $page;
 
-		$data["results"] = $this->Report_model->fetch_record_absensi($config["per_page"], $page, $filter);
+		$data["results"] = $this->Report_model->fetch_record_absensi(30, $page, $filter);
 
 		if($this->input->post('ajax', FALSE)){
 			echo json_encode(array(
