@@ -46,7 +46,7 @@
 							</tr>
 							{{/each}}
 						{{else}}
-							  <tr><td colspan="5">No records found!</tr></td>
+							  <tr><td colspan="6">No records found!</tr></td>
 						{{/if}}
 					</tbody>
 				</table>

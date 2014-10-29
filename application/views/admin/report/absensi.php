@@ -30,7 +30,7 @@
 		     	<td width="100"><input type="text" name="nik"/></td>
 		    </tr>
 		    <tr>
-		      	<td width="100">Tanggal</td>
+		      	<td width="100">Tanggal Mulai</td>
 		      	<td width="7">:</td>
 		     	<td width="100">
 		     		<span class="field">
@@ -38,7 +38,7 @@
 		    		</span>
 		    </tr>
 		    <tr>
-		      	<td width="100">Tanggal</td>
+		      	<td width="100">Tanggal Akhir</td>
 		      	<td width="7">:</td>
 		     	<td width="100">
 		     		<span class="field">
@@ -56,14 +56,14 @@
 				buttonImageOnly: false,
 				changeMonth: true,
 				changeYear: true,
-				dateFormat: "dd-mm-yy"
+				dateFormat: "yy-mm-dd"
 			}).val()
 
 			$('#date_to').datepicker({
 				buttonImageOnly: false,
 				changeMonth: true,
 				changeYear: true,
-				dateFormat: "dd-mm-yy"
+				dateFormat: "yy-mm-dd"
 			}).val()
 		});
 	
