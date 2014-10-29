@@ -14,6 +14,7 @@ class Report_model extends CI_Model {
 	var $table_penjualan	= 'customer';
 	var $table_stok_barang 	= 'm_barang';
 	var $table_service		= 'vw_transaksi_mekanik';
+	var $table_mekanik		= 'vw_mekanik_pit';
 	
 	function fetch_record_absensi($limit, $start, $filter){
 	  	$this->db->select("abs_data.*, main_user.nama");
@@ -134,5 +135,25 @@ class Report_model extends CI_Model {
 		$this->db->from($this->table_stok_barang);
 		return $this->db->count_all_results();
 	}
+
+	function fetch_record_mekanik($limit, $start, $filter){
+		$this->db->select("*");
+		$this->db->from($this->table_mekanik);
+		$this->db->limit($limit, $start);
+
+		foreach ($filter as $key => $value) {
+			
+		}
+		
+		$query = $this->db->get();
+		return ($query->num_rows() > 0)  ? $query->result() : FALSE;
+	}
+
+	function record_count_mekanik(){
+		
+		$this->db->from($this->table_mekanik);
+		return $this->db->count_all_results();
+	}
+
 
 }
