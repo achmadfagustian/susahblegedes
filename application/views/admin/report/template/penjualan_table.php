@@ -36,8 +36,8 @@
 								<td>{{kode_satuan}}</td>                                               
 								<td>{{qty}}</td>
 								<td>{{harga}}</td>
-								<td>{{sub_diskon}}</td>
-								<td>{{diskon}}</td>  
+								<td>{{diskon}}</td>
+								<td>{{diskon_total}}</td>  
 								<td>{{sub_total}}</td>                                                                    
 							</tr>
 							{{/each}}
@@ -50,6 +50,9 @@
 		</div>
 		<form method="POST" action="#" id="form-hidden-filter" class="hidden">
 			<input type="hidden" name="ajax" value="true"/>
+			<input type="hidden" name="no_polisi" value="<?php echo htmlspecialchars($no_polisi);?>"/>
+            <input type="hidden" name="id_customer" value="<?php echo htmlspecialchars($id_customer);?>"/>
+
 		</form>
 		<div id="pagination"></div>
 		<script type="text/javascript" src="<?php echo base_url('js/plugins/jquery-1.10.2.js')?>"></script>

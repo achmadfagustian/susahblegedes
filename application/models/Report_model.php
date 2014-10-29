@@ -11,7 +11,7 @@ class Report_model extends CI_Model {
 	/* Insialiasi nama table */
 	var $table_absensi		= 'abs_data';
 	var $table_riwayat		= 'vw_transaksi';
-	var $table_penjualan	= 'customer_history_detail';
+	var $table_penjualan	= 'customer';
 	var $table_stok_barang 	= 'm_barang';
 	var $table_service		= 'vw_transaksi_mekanik';
 	
@@ -111,12 +111,20 @@ class Report_model extends CI_Model {
 		return $this->db->count_all_results();
 	}
 
-	function fetch_record_penjualan($limit, $start){
-		$this->db->select("customer_history_detail.*");
+	function fetch_record_penjualan($limit, $start, $filter){
+		$this->db->select("*");
 		$this->db->from($this->table_penjualan);
+		$this->db->join("customer_history_detail", "customer_history_detail.id_customer_history = customer.id_customer");
 		$this->db->limit($limit, $start);
+
+		foreach ($filter as $key => $value) {
+			if($value!="" && $key == "no_polisi"){
+				$this->db->where("customer.no_polisi", $value);
+			}elseif ($value!="" && $key == "id_customer") {
+				$this->db->where("customer.id_customer", $value);
+			}
+		}
 		
-		$this->db->order_by('customer_history_detail.id_customer_history','ASC');
 		$query = $this->db->get();
 		return ($query->num_rows() > 0)  ? $query->result() : FALSE;
 	}

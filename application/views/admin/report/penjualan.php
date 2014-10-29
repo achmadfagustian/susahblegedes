@@ -24,12 +24,12 @@
 		    <tr>
 		      	<td width="100">ID Pelanggan</td>
 		      	<td width="7">:</td>
-		      	<td width="200"><input type="text" name="nama"/></td>
+		      	<td width="200"><input type="text" name="id_customer"/></td>
 		    </tr>
 		    <tr>
 		      	<td width="100">No Polisi</td>
 		      	<td width="7">:</td>
-		     	<td width="100"><input type="text" name="nik"/></td>
+		     	<td width="100"><input type="text" name="no_polisi"/></td>
 		    </tr>		    
 		  </table>
 		</form>

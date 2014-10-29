@@ -196,16 +196,14 @@ class Report extends CI_Controller {
 	}
 
 	public function penjualan_table_index(){
-		$data = array( 	'date_from'	=> $this->input->get('date_from'),
-						'date_to'	=> $this->input->get('date_to'),
-						'nama'		=> $this->input->get('nama'));
+		$data = array( 	'id_customer'	=> $this->input->get('id_customer'),
+						'no_polisi'		=> $this->input->get('no_polisi'));
 		$this->load->view('admin/report/template/penjualan_table',$data);
 	}
 
 	public function penjualan_table(){
-		$filter = array('date_from'	=> $this->input->post('date_from'),
-						'date_to'	=> $this->input->post('date_to'),
-						'nama'		=> $this->input->post('nama'));
+		$filter = array('id_customer'	=> $this->input->get('id_customer'),
+						'no_polisi'		=> $this->input->get('no_polisi'));
 						
 		$config = $this->fungsi->common_pagination();
 		$config["base_url"] = base_url() . "admin/report/penjualan_table/";
@@ -216,13 +214,12 @@ class Report extends CI_Controller {
 		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 		$data['page'] = $page;
 
-		$data["results"] = $this->Report_model->fetch_record_penjualan($config["per_page"], $page);
+		$data["results"] = $this->Report_model->fetch_record_penjualan($config["per_page"], $page, $filter);
 
 		if($this->input->post('ajax', FALSE)){
 			echo json_encode(array(
-				'date_from'	=> $filter['date_from'],
-				'date_to' 	=> $filter['date_to'],
-				'nama' 		=> $filter['nama'],
+				'nama' 		=> $filter['no_polisi'],
+				'id_barang'	=> $filter['id_customer'],
 				'results' 	=> $data["results"],
 				'pagination'=> $this->pagination->create_links()
 			));
