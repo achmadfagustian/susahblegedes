@@ -142,19 +142,6 @@ class Report extends CI_Controller {
 	
 	}
 
-	public function service_detail(){
-		$data = array(
-			'title' => 'Admin | Report -> Service Detail',
-			'menu_active' => M_REPORT_A,
-			'submenu_active' => M_REPORT_A_SERVICE_DETAIL
-		);
-		$this->view('admin/report/service_detail',$data);
-	}
-	
-	public function print_service_detail_xls(){
-	
-	}
-
 	public function service_table_index(){
 		$data = array( 	'kode_perusahaan'	=> $this->input->get('kode_perusahaan'),
 						'nama'			=> $this->input->get('nama'),
@@ -171,7 +158,7 @@ class Report extends CI_Controller {
 						
 		$config = $this->fungsi->common_pagination();
 		$config["base_url"] = base_url() . "admin/report/absensi_table/";
-		$config["total_rows"] = $this->Report_model->record_count_absensi();
+		$config["total_rows"] = $this->Report_model->record_count_service();
 		$config["per_page"] = $this->config->item('paging_limit');
 
 		$this->pagination->initialize($config);
@@ -200,22 +187,42 @@ class Report extends CI_Controller {
 		);
 		$this->view('admin/report/penjualan',$data);
 	}
+
+	public function penjualan_table_index(){
+		$data = array( 	'date_from'	=> $this->input->get('date_from'),
+						'date_to'	=> $this->input->get('date_to'),
+						'nama'		=> $this->input->get('nama'));
+		$this->load->view('admin/report/template/penjualan_table',$data);
+	}
+
+	public function penjualan_table(){
+		$filter = array('date_from'	=> $this->input->post('date_from'),
+						'date_to'	=> $this->input->post('date_to'),
+						'nama'		=> $this->input->post('nama'));
+						
+		$config = $this->fungsi->common_pagination();
+		$config["base_url"] = base_url() . "admin/report/penjualan_table/";
+		$config["total_rows"] = $this->Report_model->record_count_absensi();
+		$config["per_page"] = $this->config->item('paging_limit');
+
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		$data['page'] = $page;
+
+		$data["results"] = $this->Report_model->fetch_record_penjualan($config["per_page"], $page);
+
+		if($this->input->post('ajax', FALSE)){
+			echo json_encode(array(
+				'date_from'	=> $filter['date_from'],
+				'date_to' 	=> $filter['date_to'],
+				'nama' 		=> $filter['nama'],
+				'results' 	=> $data["results"],
+				'pagination'=> $this->pagination->create_links()
+			));
+		};
+	}
 	
 	public function print_penjualan_xls(){
-		
-	}
-//==============================================================================	
-	
-	public function penjualan_detail(){
-		$data = array(
-			'title' => 'Admin | Report -> Penjualan Detail',
-			'menu_active' => M_REPORT_A,
-			'submenu_active' => M_REPORT_A_PENJUALAN_DETAIL
-		);
-		$this->view('admin/report/penjualan_detail',$data);
-	}
-	
-	public function print_penjualan_detail_xls(){
 		
 	}
 //==============================================================================	
@@ -232,28 +239,14 @@ class Report extends CI_Controller {
 	public function print_mekanik_xls(){
 		
 	}
-//==============================================================================	
-	
-	public function mekanik_detail(){
-		$data = array(
-			'title' => 'Admin | Report -> Mekanik Detail',
-			'menu_active' => M_REPORT_A,
-			'submenu_active' => M_REPORT_A_MEKANIK_DETAIL
-		);
-		$this->view('admin/report/mekanik_detail',$data);
-	}
-	
-	public function print_mekanik_detail_xls(){
-		
-	}
 	//==============================================================================	
 	
 	public function stok_barang(){
 		$data = array(
-			'title' => 'Admin | Report -> Stok Barang',
+			'title' => 'Admin | Report -> Report Stok Barang',
 			'menu_active' => M_REPORT_A,
 			'submenu_active' => M_REPORT_A_MEKANIK
-			);
+		);
 		$this->view('admin/report/stok_barang',$data);
 	}
 	
@@ -269,7 +262,7 @@ class Report extends CI_Controller {
 						 'id_barang'	=> $this->input->post('id_barang'));
 		$config = $this->fungsi->common_pagination();
 		$config["base_url"] = base_url() . "admin/report/stok_barang_table/";
-		$config["total_rows"] = $this->Report_model->record_count_absensi();
+		$config["total_rows"] = $this->Report_model->record_count_stok_barang();
 		$config["per_page"] = $this->config->item('paging_limit');
 
 		$this->pagination->initialize($config);

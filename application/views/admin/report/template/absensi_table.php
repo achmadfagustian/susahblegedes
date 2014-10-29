@@ -20,7 +20,7 @@
 							<th class="head1">Nama</th>
 							<th class="head0">Tanggal Absensi</th>
 							<th class="head1">Status</th>
-							<th class="head0">Gaji</th>
+							<th class="head0">Salary</th>
 						</tr>
 					</thead>
 					<tbody>

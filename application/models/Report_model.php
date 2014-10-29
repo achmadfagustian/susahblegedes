@@ -11,6 +11,7 @@ class Report_model extends CI_Model {
 	/* Insialiasi nama table */
 	var $table_absensi		= 'abs_data';
 	var $table_riwayat		= 'vw_transaksi';
+	var $table_penjualan	= 'customer_history_detail';
 	var $table_stok_barang 	= 'm_barang';
 	var $table_service		= 'vw_transaksi_mekanik';
 	
@@ -74,7 +75,7 @@ class Report_model extends CI_Model {
 
 	function record_count_service(){
 		
-		$this->db->from($this->table_absensi);
+		$this->db->from($this->table_service);
 		return $this->db->count_all_results();
 	}
 
@@ -94,6 +95,28 @@ class Report_model extends CI_Model {
 		$this->db->order_by('m_barang.id_barang','ASC');
 		$query = $this->db->get();
 		return ($query->num_rows() > 0)  ? $query->result() : FALSE;
+	}
+
+	function record_count_stok_barang(){
+		
+		$this->db->from($this->table_stok_barang);
+		return $this->db->count_all_results();
+	}
+
+	function fetch_record_penjualan($limit, $start){
+		$this->db->select("customer_history_detail.*");
+		$this->db->from($this->table_penjualan);
+		$this->db->limit($limit, $start);
+		
+		$this->db->order_by('customer_history_detail.id_customer_history','ASC');
+		$query = $this->db->get();
+		return ($query->num_rows() > 0)  ? $query->result() : FALSE;
+	}
+
+	function record_count_penjualan(){
+		
+		$this->db->from($this->table_stok_barang);
+		return $this->db->count_all_results();
 	}
 
 }
