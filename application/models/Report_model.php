@@ -63,10 +63,18 @@ class Report_model extends CI_Model {
 	}
 
 //======================================================
-	function fetch_record_service($limit, $start){
+	function fetch_record_service($limit, $start, $filter){
 		$this->db->select("vw_transaksi_mekanik.*");
 		$this->db->from($this->table_service);
 		$this->db->limit($limit, $start);
+		
+		foreach ($filter as $key => $value) {
+			if($value!="" && $key == "nik"){
+				$this->db->where("vw_transaksi_mekanik.nik_mekanik", $value);
+			}elseif ($value!="" && $key == "date_from") {
+				$this->db->where("vw_transaksi_mekanik.nama_mekanik", $value);
+			}
+		}
 		
 		$this->db->order_by('vw_transaksi_mekanik.nama_mekanik','DESC');
 		$query = $this->db->get();

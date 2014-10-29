@@ -48,6 +48,8 @@
 		</div>
 		<form method="POST" action="#" id="form-hidden-filter" class="hidden">
 			<input type="hidden" name="ajax" value="true"/>
+			<input type="hidden" name="nama" value="<?php echo htmlspecialchars($nama); ?>"/>
+			<input type="hidden" name="id_mekanik" value="<?php echo htmlspecialchars($id_mekanik); ?>"/>
 		</form>
 		<div id="pagination"></div>
 		<script type="text/javascript" src="<?php echo base_url('js/plugins/jquery-1.10.2.js')?>"></script>

@@ -142,19 +142,27 @@ class Report extends CI_Controller {
 	
 	}
 
+
+	public function service_detail(){
+		$data = array(
+			'title' => 'Admin | Report -> Service Detail',
+			'menu_active' => M_REPORT_A,
+			'submenu_active' => M_REPORT_A_SERVICE_DETAIL
+		);
+		$this->view('admin/report/service_detail',$data);
+	}
+	
+
 	public function service_table_index(){
-		$data = array( 	'kode_perusahaan'	=> $this->input->get('kode_perusahaan'),
-						'nama'			=> $this->input->get('nama'),
-						'kota'			=> $this->input->get('kota'),
-						'kodepos'		=> $this->input->get('kodepos'),
-						'no_telp'		=> $this->input->get('no_telp'),
-						'no_fax'		=> $this->input->get('no_fax'));
+		$data = array( 	'nama'			=> $this->input->get('nama'),
+						'id_mekanik'	=> $this->input->get('id_mekanik'));
+		
 		$this->load->view('admin/report/template/service_table',$data);
 	}
+	
 	public function service_table(){
-		$filter = array('date_from'	=> $this->input->post('date_from'),
-						'date_to'	=> $this->input->post('date_to'),
-						'nama'		=> $this->input->post('nama'));
+		$filter = array('nama'	=> $this->input->post('nama'),
+						'id_mekanik'	=> $this->input->post('id_mekanik'));
 						
 		$config = $this->fungsi->common_pagination();
 		$config["base_url"] = base_url() . "admin/report/absensi_table/";
@@ -165,12 +173,11 @@ class Report extends CI_Controller {
 		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 		$data['page'] = $page;
 
-		$data["results"] = $this->Report_model->fetch_record_service($config["per_page"], $page);
+		$data["results"] = $this->Report_model->fetch_record_service($config["per_page"], $page, $filter);
 
 		if($this->input->post('ajax', FALSE)){
 			echo json_encode(array(
-				'date_from'	=> $filter['date_from'],
-				'date_to' 	=> $filter['date_to'],
+				'id_mekanik'=> $filter['id_mekanik'],
 				'nama' 		=> $filter['nama'],
 				'results' 	=> $data["results"],
 				'pagination'=> $this->pagination->create_links()
