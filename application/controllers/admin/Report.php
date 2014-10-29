@@ -258,17 +258,15 @@ class Report extends CI_Controller {
 	}
 	
 	public function stok_barang_table_index(){
-		$data = array( 	'date_from'	=> $this->input->get('date_from'),
-						'date_to'	=> $this->input->get('date_to'),
-						'nama'		=> $this->input->get('nama'));
+		//Set $data from search input form
+		$data = array( 	'nama'	=> $this->input->get('nama'),
+						'id_barang'	=> $this->input->get('id_barang'));
 		$this->load->view('admin/report/template/stok_barang_table',$data);
 	}
 
 	public function stok_barang_table(){
-		$filter = array('date_from'	=> $this->input->post('date_from'),
-						'date_to'	=> $this->input->post('date_to'),
-						'nama'		=> $this->input->post('nama'));
-						
+		$filter = array( 'nama'			=> $this->input->post('nama'),
+						 'id_barang'	=> $this->input->post('id_barang'));
 		$config = $this->fungsi->common_pagination();
 		$config["base_url"] = base_url() . "admin/report/stok_barang_table/";
 		$config["total_rows"] = $this->Report_model->record_count_absensi();
@@ -277,14 +275,13 @@ class Report extends CI_Controller {
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 		$data['page'] = $page;
-
-		$data["results"] = $this->Report_model->fetch_record_stok_barang($config["per_page"], $page);
+		
+		$data["results"] = $this->Report_model->fetch_record_stok_barang($config["per_page"], $page, $filter);
 
 		if($this->input->post('ajax', FALSE)){
 			echo json_encode(array(
-				'date_from'	=> $filter['date_from'],
-				'date_to' 	=> $filter['date_to'],
 				'nama' 		=> $filter['nama'],
+				'id_barang'	=> $filter['id_barang'],
 				'results' 	=> $data["results"],
 				'pagination'=> $this->pagination->create_links()
 			));

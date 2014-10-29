@@ -9,13 +9,31 @@
 			<div class="form-wrap">
 				<form class="stdform" method="POST" action="#">
 					<div class="btn-top-wrap">
-						<!--input type="button" value="Cari" class="btn-top" id="cari"-->
+						<input type="button" value="Cari" class="btn-top" id="cari">
 					</div>
 					<div id="ajaxDataList"></div>
 				</form>
 			</div>
 		</div>
 	</div>
+	
+	<div id="dialog-filter">
+		<form method="POST" action="#" id="form-filter">
+			<table width="512" border="0">
+		    <tr>
+		      	<td width="100">Nama Barang</td>
+		      	<td width="7">:</td>
+		      	<td width="200"><input type="text" name="nama"/></td>
+		    </tr>
+		    <tr>
+		      	<td width="100">ID Barang</td>
+		      	<td width="7">:</td>
+		     	<td width="100"><input type="text" name="id_barang"/></td>
+		    </tr>
+		  </table>
+		</form>
+	</div>
+	
 	<script>
 		var i = 0;
 		

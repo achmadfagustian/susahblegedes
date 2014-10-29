@@ -78,10 +78,18 @@ class Report_model extends CI_Model {
 		return $this->db->count_all_results();
 	}
 
-	function fetch_record_stok_barang($limit, $start){
+	function fetch_record_stok_barang($limit, $start, $filter){
 		$this->db->select("m_barang.id_barang, m_barang.nama, m_barang.jum_stock");
 		$this->db->from($this->table_stok_barang);
 		$this->db->limit($limit, $start);
+		
+		foreach ($filter as $key => $value) {
+			if($value!="" && $key == "id_barang"){
+				$this->db->where("m_barang.id_barang", $value);
+			}elseif ($value!="" && $key == "nama") {
+				$this->db->where("m_barang.nama", $value);
+			}
+		}
 		
 		$this->db->order_by('m_barang.id_barang','ASC');
 		$query = $this->db->get();

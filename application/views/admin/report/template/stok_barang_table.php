@@ -24,7 +24,7 @@
 					<tbody>
 						{{#if results}}
 							{{#each results}}
-							<tr id="{{nik}}">
+							<tr id="{{id_barang}}">
 								<td class="chkbox"><input type="checkbox" class="chkbox-input" value="{{id_perusahaan}}"/></td>
 								<td>{{id_barang}}</td>                                                                              
 								<td>{{nama}}</td>                                                                                   
@@ -40,6 +40,8 @@
 		</div>
 		<form method="POST" action="#" id="form-hidden-filter" class="hidden">
 			<input type="hidden" name="ajax" value="true"/>
+			<input type="hidden" name="nama" value="<?php echo htmlspecialchars($nama);?>"/>
+			<input type="hidden" name="id_barang" value="<?php echo htmlspecialchars($id_barang);?>"/>
 		</form>
 		<div id="pagination"></div>
 		<script type="text/javascript" src="<?php echo base_url('js/plugins/jquery-1.10.2.js')?>"></script>
